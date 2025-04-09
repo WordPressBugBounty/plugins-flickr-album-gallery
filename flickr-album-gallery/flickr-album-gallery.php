@@ -4,10 +4,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /*
- * Plugin Name: Album Gallery - Flickr Album Gallery - 2.2.13
+ * Plugin Name: Album Gallery - Flickr Album Gallery - 2.2.14
  * Plugin URI:  https://developer.wordpress.org/plugins/the-basics/
  * Description: Flickr Album Gallery is on JS API plugin to display all public Flickr albums on your WordPress website.
- * Version:     2.2.13
+ * Version:     2.2.14
  * Author:      FARAZFRANK
  * Author URI:  https://wpfrank.com/
  * Text Domain: flickr-album-gallery
@@ -32,7 +32,7 @@ along with Flickr Album Gallery. If not, see http://www.gnu.org/licenses/gpl-2.0
  * Constant Variable
  */
 define( 'FAG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'FAG_PLUGIN_VER', '2.2.13' );
+define( 'FAG_PLUGIN_VER', '2.2.14' );
 
 // load JS script
 function wpfrank_fag_load_scripts() {

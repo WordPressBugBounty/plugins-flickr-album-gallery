@@ -1,28 +1,28 @@
-=== Album Gallery - Flickr Album Gallery ===
+=== Album Gallery - Create Flickr Album Gallery on WordPress ===
 Contributors: FARAZFRANK
-Tags: flickr, flickr album gallery, flickr gallery, flickr image gallery, flickr widget
+Tags: Flickr, Flickr album gallery, Flickr gallery, embed Flickr, Flickr widget
 Requires at least: 4.0
-Tested up to: 6.6.1
-Requires PHP: 4.0
-Stable tag: 2.2.13
+Tested up to: 6.7.2
+Requires PHP: 5.0
+Stable tag: 2.2.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Flickr album gallery plugin is a best image photo album gallery plugin. Embed Flickr albums on any WordPress blog and websites. 
+Flickr album gallery plugin is a best album gallery plugin to embed Flickr albums on any WordPress blog and websites. 
 
 == Description ==
 
-Flickr Album Image Gallery is based on Flickr JS API. Use the Flickr plugin to display all your Flickr Albums on your WordPress Blog Site. You can use your own Flickr API and Flickr Album ID to publish Flickr Albums on your WordPress Blog website.
+Flickr album gallery plugin is based on Flickr JS API. Use the Flickr plugin to display all your Flickr albums on your WordPress Blog Site. You can use your own Flickr API and album ID to publish Flickr Albums on your WordPress Blog website.
 
 ### How to display Flickr albums on your WordPress blog and websites?
 
 https://www.youtube.com/watch?v=PynE88-WX_o
 
-Flickr album gallery plugin shows your Flickr album images on your WordPress website with a smooth transition that gives a soothing effect to your visitors. We have invested a lot of time, dedication and resources in building this plugin, which is reflected through our customer satisfaction and positive feedback for Flickr album gallery plugin.
+Flickr plugin shows your Flickr album on your WordPress website with a smooth transition that gives a soothing effect to your visitors. We have invested a lot of time, dedication and resources in building this plugin, which is reflected through our customer satisfaction and positive feedback for the plugin.
 
-Flickr Album Gallery plugin is such an easy to use and fully documented ready plugin.
+Flickr Album plugin is such an easy to use and fully documented ready plugin.
 
-### Flickr Album Gallery Free Plugin Features
+### Flickr Album Free Plugin Features
 * Gallery Title 
 * Two Column Layout
 * SEO Friendly Album Galleries
@@ -30,7 +30,7 @@ Flickr Album Gallery plugin is such an easy to use and fully documented ready pl
 * One Lightbox
 * Photo Limit 200 Per Album
 
-### Flickr Album Gallery Pro Plugin Features
+### Flickr Album Pro Plugin Features
 * Multiple Columns
 * Multiple Lightbox Options
 * Responsive Bootstrap Based Gallery Layout
@@ -47,9 +47,9 @@ Flickr Album Gallery plugin is such an easy to use and fully documented ready pl
 * Masonry Layout
 * Custom CSS
 
-### Free Plugin Demo - [Flickr Album Gallery](http://wpfrank.com/demo/flickr-album-gallery/)
+### Check Plugin Demo - [Free Version](http://wpfrank.com/demo/flickr-album-gallery/)
 
-### Pro Plugin Demo - [Flickr Album Gallery Pro](http://wpfrank.com/demo/flickr-album-gallery-pro/)
+### Check Plugin Demo - [Pro Version](http://wpfrank.com/demo/flickr-album-gallery-pro/)
 
 ### Language Contributors
 
@@ -62,7 +62,7 @@ Please contribute to translate our plugin. Contact us at farazfrank777 (at) gmai
 1. Download the plugin using WordPress.org or you can download the plugin through the WordPress admin dashboard `Plugins -> Add New`
 2. After download and activate the plugin, go to `Flickr Album Gallery -> Add New Gallery` submenu page
 3. Type the `Title` for the gallery, provide your `Flickr API Key`, provide your `Flickr Album ID`, Custom CSS field is optional to use, if you want to add some custom style then you use custom CSS setting.
-4. Hit the publish button. Below the publish button, copy the Flickr album gallery shortcode *[FAG id=123]*, now you can publish Flickr Album Gallery into any Page or Post using this shortcode.
+4. Hit the publish button. Below the publish button, copy the album gallery shortcode *[FAG id=123]*, now you can publish Album Gallery into any Page or Post using this shortcode.
 
 == Frequently Asked Questions ==
 
@@ -91,6 +91,9 @@ Yes, you can show up to 200 images per album.
 Please use WordPress [support forum](http://wordpress.org/support/plugin/flickr-album-gallery) to ask any query regarding any issue. Or Please contact me at my website via [contact page](https://wpfrank.com/contact/).
 
 == Changelog ==
+
+= 2.2.14 =
+* Video items will be skipped for now in Flickr Albums.
 
 = 2.2.13 =
 * Regular update after 4 month
@@ -383,8 +386,8 @@ None
 
 == Screenshots ==
 1. Flickr Album Gallery Preview 1
-2. Flickr Album Gallery Preview 2
-3. Flickr Album Gallery Preview 3
-4. Flickr Album Gallery Admin Gallery Creation
-5. Flickr Album Gallery Shortcode
-6. Flickr Album Gallery Preview On Page
+2. Flickr Album Preview 2
+3. Flickr Gallery Preview 3
+4. Album Gallery Admin Gallery Creation
+5. Plugin Shortcode
+6. Gallery Preview On Page
