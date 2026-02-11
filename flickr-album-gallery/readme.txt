@@ -1,94 +1,150 @@
-=== Album Gallery - Create Flickr Album Gallery on WordPress ===
-Contributors: FARAZFRANK
-Tags: Flickr, Flickr album gallery, Flickr gallery, embed Flickr, Flickr widget
-Requires at least: 4.0
-Tested up to: 6.7.2
-Requires PHP: 5.0
+=== Album Gallery For Flickr ===
+Contributors: awordpresslife, razipathhan, hanif0991, muhammadshahid, fkfaisalkhan007, sharikkhan007, zishlife, FARAZFRANK
+Tags: flickr gallery, flickr, image gallery, photo gallery, lightbox
+Requires at least: 5.0
+Requires PHP: 7.0
+Tested up to: 6.9
 Stable tag: 2.2.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Flickr album gallery plugin is a best album gallery plugin to embed Flickr albums on any WordPress blog and websites. 
+Display Flickr albums on WordPress with lightbox preview, SEO-friendly galleries, and easy shortcode integration.
 
 == Description ==
 
-Flickr album gallery plugin is based on Flickr JS API. Use the Flickr plugin to display all your Flickr albums on your WordPress Blog Site. You can use your own Flickr API and album ID to publish Flickr Albums on your WordPress Blog website.
+Flickr Album Gallery helps you showcase your Flickr photo collections directly on your WordPress website. Whether you're a photographer sharing your portfolio, a blogger documenting your travels, or a business highlighting your work, this plugin provides a straightforward way to embed and display Flickr albums.
 
-### How to display Flickr albums on your WordPress blog and websites?
+**Demo Links:**
+
+**Free Version Demo:** **[Flickr Album Gallery](http://wpfrank.com/demo/flickr-album-gallery/)**
+**Pro Version Demo:** **[Flickr Album Gallery Pro](http://wpfrank.com/demo/flickr-album-gallery-pro/)**
+**Where to Buy:** **[Buy Flickr Album Gallery Pro](https://wpfrank.com/wordpress-plugins/flickr-album-gallery-pro/)**
+
+**How It Works**
+
+Connect your Flickr account using your API Key and Album ID, then use a simple shortcode to display your gallery anywhere on your site. The plugin fetches your photos and displays them in a clean two-column layout with lightbox functionality for full-size viewing.
+
+== Video Tutorial ==
+
+Watch this tutorial to learn how to set up Flickr Album Gallery:
 
 https://www.youtube.com/watch?v=PynE88-WX_o
 
-Flickr plugin shows your Flickr album on your WordPress website with a smooth transition that gives a soothing effect to your visitors. We have invested a lot of time, dedication and resources in building this plugin, which is reflected through our customer satisfaction and positive feedback for the plugin.
+**Key Capabilities**
 
-Flickr Album plugin is such an easy to use and fully documented ready plugin.
+* Embed Flickr albums using shortcode `[FAG id=123]`
+* Two-column responsive gallery layout
+* Lightbox preview for enlarged image viewing
+* SEO-optimized with proper title tags and alt text
+* Works with posts, pages, and widget areas
+* Compatible with Gutenberg and page builders like Elementor
+* Display up to 200 photos per album
 
-### Flickr Album Free Plugin Features
-* Gallery Title 
-* Two Column Layout
-* SEO Friendly Album Galleries
-* Album Images Lightbox Preview
-* One Lightbox
-* Photo Limit 200 Per Album
+**Who Is This For?**
 
-### Flickr Album Pro Plugin Features
-* Multiple Columns
-* Multiple Lightbox Options
-* Responsive Bootstrap Based Gallery Layout
-* SEO Friendly Album
-* Thumbnail Image Size Setting
-* Lightbox Image Size Setting
-* Thumbnail Limit Setting
-* Default User Settings
-* Image Hover Color
-* Image Hover Color Opacity
-* Photo Limit 500 Per Album
-* 8 Mouse Hover Effect And Animations On Album Thumbnails
-* Lazy Loading Setting
-* Masonry Layout
-* Custom CSS
+This plugin works well for photographers who already host their images on Flickr and want to display them on WordPress without re-uploading. It's also useful for bloggers and businesses who maintain Flickr albums and need an easy integration method.
 
-### Check Plugin Demo - [Free Version](http://wpfrank.com/demo/flickr-album-gallery/)
+== Free Version Features ==
 
-### Check Plugin Demo - [Pro Version](http://wpfrank.com/demo/flickr-album-gallery-pro/)
+* Gallery title customization
+* Two-column layout
+* Lightbox image preview
+* SEO-friendly output with alt text
+* Custom CSS support
+* Up to 200 images per album
+* Shortcode-based embedding
+* Widget support
 
-### Language Contributors
+== Pro Version Features ==
 
-French Translation by [Alexey Gorbenko - Алексей Горбенко](http://remont-kompov.ru/)
-Hindi Translation by [Faraz Khan - फराज़ खान](https://wpfrank.com/)
+The Pro version adds advanced customization and layout options:
 
-Please contribute to translate our plugin. Contact us at farazfrank777 (at) gmail (dot) com.
+* Multiple column layouts (3, 4, 5 columns)
+* 8 hover effects and animations
+* Masonry grid layout
+* Lazy loading for faster page loads
+* Multiple lightbox options
+* Thumbnail and lightbox image size settings
+* Custom hover color and opacity
+* Thumbnail border styling
+* Up to 500 images per album
+* Default user settings for quick setup
+
+== Language Contributors ==
+
+* French Translation by [Alexey Gorbenko](http://remont-kompov.ru/)
+* Hindi Translation by [Faraz Khan](https://wpfrank.com/)
+
+Want to contribute a translation? Contact us at farazfrank777 (at) gmail (dot) com.
 
 == Installation ==
-1. Download the plugin using WordPress.org or you can download the plugin through the WordPress admin dashboard `Plugins -> Add New`
-2. After download and activate the plugin, go to `Flickr Album Gallery -> Add New Gallery` submenu page
-3. Type the `Title` for the gallery, provide your `Flickr API Key`, provide your `Flickr Album ID`, Custom CSS field is optional to use, if you want to add some custom style then you use custom CSS setting.
-4. Hit the publish button. Below the publish button, copy the album gallery shortcode *[FAG id=123]*, now you can publish Album Gallery into any Page or Post using this shortcode.
+
+1. Go to your WordPress dashboard and navigate to Plugins > Add New.
+2. Search for "Flickr Album Gallery" and click Install Now.
+3. Activate the plugin after installation.
+4. Navigate to Flickr Album Gallery > Add New Gallery in your dashboard.
+5. Enter your gallery title, Flickr API Key, and Album ID.
+6. Optionally, add custom CSS for styling.
+7. Publish the gallery and use the shortcode `[FAG id=123]` in posts, pages, or widgets.
 
 == Frequently Asked Questions ==
 
-= How to install plugin? =
+= How do I get my Flickr API Key? =
 
-Download the plugin using WordPress.org or you can download the plugin through the WordPress admin dashboard `Plugins -> Add New`
+Visit [Flickr API Guide](https://wpfrank.com/how-to-get-flickr-album-id/) for step-by-step instructions on obtaining your API key from Flickr.
 
-= How to publish Flickr album on website? =
+= How do I find my Flickr Album ID? =
 
-After activation plugin go plugin page, click on "Add New Album", provide your Flickr API Key and Flickr Album ID. Publish the album post post and copy album shortcode and paste the shortcode into any page or post to publish the album.
+Open your Flickr album in a browser. The Album ID is the number in the URL after `/albums/`. See our [detailed guide](https://wpfrank.com/how-to-get-flickr-album-id/) for help.
 
-= How to get Flickr API Key? =
+= Is this plugin compatible with the latest WordPress version? =
 
-We have written a post with all clear instruction and screenshot to get own Flickr API Key. For more details: [Click Here](https://wpfrank.com/how-to-get-flickr-api-key/).
+Yes, we regularly test and update the plugin for compatibility with new WordPress releases.
 
-= How to get Flickr Album ID Key? =
+= Can I use this plugin with Elementor, Gutenberg, or other page builders? =
 
-We have written a post with all clear instruction and screenshot to get own Flickr Album ID. For more details: [Click Here](https://wpfrank.com/how-to-get-flickr-album-id/).
+Yes, the shortcode `[FAG id=123]` works with all major page builders including Elementor, Gutenberg, Divi, and others.
 
-= Is there any Photo limit into plugin? =
+= How many photos can I display per album? =
 
-Yes, you can show up to 200 images per album.
+The free version supports up to 200 images per album. The Pro version increases this limit to 500 images.
 
-= How do I ask any question regarding Flickr plugin? =
+= Can I display multiple galleries on the same page? =
 
-Please use WordPress [support forum](http://wordpress.org/support/plugin/flickr-album-gallery) to ask any query regarding any issue. Or Please contact me at my website via [contact page](https://wpfrank.com/contact/).
+Yes, you can add multiple shortcodes with different gallery IDs on the same page or post.
+
+= How do I update my gallery when I add new photos to Flickr? =
+
+The plugin fetches photos from Flickr each time the page loads, so new photos appear automatically. If you're using caching, clear your cache to see updates.
+
+= Does this plugin work with private Flickr albums? =
+
+No, only publicly visible Flickr albums can be displayed. Private albums require authentication that the free version doesn't support.
+
+= Why are my images not loading? =
+
+Check that your API Key and Album ID are correct. Also verify that the album is set to public on Flickr. If using a caching plugin, try clearing the cache.
+
+= Can I customize the gallery appearance? =
+
+Yes, you can add custom CSS in the gallery settings. The Pro version offers additional styling options like hover colors, border settings, and multiple layout choices.
+
+= Does the plugin affect page load speed? =
+
+The free version loads all images at once. For better performance with large albums, consider the Pro version which includes lazy loading.
+
+= How do I get support? =
+
+Visit the [WordPress Support Forum](https://wordpress.org/support/plugin/flickr-album-gallery) or contact us through our [website](https://wpfrank.com/contact/).
+
+== Screenshots ==
+
+1. Gallery Display: Clean two-column layout on your site.
+2. Gallery Demo: Column layout with spacing options.
+3. Lightbox Preview: Full-size images with smooth transitions.
+4. Admin Dashboard: Manage your Flickr galleries easily.
+5. Settings Page: Customize gallery settings.
+6. Shortcode Usage: Embed galleries using simple shortcodes.
 
 == Changelog ==
 
@@ -123,271 +179,7 @@ Please use WordPress [support forum](http://wordpress.org/support/plugin/flickr-
 = 2.2.4 =
 * Broken gallery problem fixed.
 
-= 2.2.3 =
-* Security fixed.
-
-= 2.2.2 =
-* Security issue fixed (major update).
-* Serialize function removed.
-
-= 2.2.1 =
-* Guideline issue fixed
-
-= 2.2.0 =
-* Security issue fixed
-
-= 2.1.9 =
-* Typos fixed
-* WP 5.7.2 compatibility check
-
-= 2.1.8 =
-* PHP Error fixed on plugin update
-
-= 2.1.7 =
-* My new plugin promotion added
-
-= 2.1.6 =
-* WP 5.6 compatibility checked and tested
-
-= 2.1.5 =
-* WP 5.5.1 compatibility checked and tested
-
-= 2.1.4 =
-* WP 5.4 compatibility check and updated
-
-= 2.1.3 =
-* Typos fixed
-* WP 5.3.2 compatibility check and fix
-
-= 2.1.2 =
-* Admin UI conflicts with WordPress 5.3.1
-* Unused assets removed like CSS and JS
-* Plugin setting updated
-* Shortcode column added on all albums page
-
-= 2.1.1 =
-* bug fixed - Image title lightbox
-
-= 2.1.0 =
-* Compatibility will all WordPress default themes
-
-= 2.0.10 =
-* Language file updated
-* Hindi language translation added
-
-
-= 2.0.9 =
-* New update
-
-= 2.0.8 =
-= 2.0.7 =
-* plugin link update
-
-= 2.0.6
-- Regular check and update
-
-= 2.0.5
-- Update
-
-= 2.0.4
-- Tested up to WordPress 5.2
-
-= 2.0.4
-- plugin will get major update this month
-
-= 2.0.3
-- update
-
-= 2.0.2
-- Banner updated
-
-== Changelog ==
-= 2.0.1
-- Admin layout updated
-
-= 2.0.0
-- Tested up to WordPress 5.1
-
-= 1.9.9
-- CSS & js library updated
-
-= 1.9.8
-- Updated Check Pro Banner
-
-= 1.9.7
-- Add Check Pro Banner
-
-= 1.9.6
-- Add Premium Products Page
-
-= 1.9.5
-- Add gallery column layout setting
-
-= 1.9.4
-- Contributor Removed
-
-= 1.9.3
-- WP Frank Flickr account API and Album ID updated
-- Album thumbnail spacing issues fixed
-
-= 1.9.2
-- Version 1.9.0 and 1.9.1 has bug so we did a roll back of working version 1.8.2 into 1.9.2
-
-= 1.9.1
-- Bug Fixed : Undefined index bug fixed
-
-= 1.9.0
-- Add : Added New Settings
-- Update : Frontend and Backend Layout
-- Update : Language and Text Doamin File
-- Minify : Image Compressed
-
-= 1.8.2
-- Meta box labels updated
-- Pro plugin details added
-- Secure URLs added
-
-= 1.8.1
-- new update with typos
-
-= 1.8.0
-- continuity update
-
-= 1.7.9
-- normal update
-
-= 1.7.8
-- miner update
-
-= 1.7.7
-- CSS Conflicts Removed
-
-= 1.7.6
-- Plugin owner changed to FARAZFRANK
-- Plugin size minimized
-
-= 1.7.5
-Version update + compatible with latest WordPress 4.9.8
-
-= 1.7.4
-Add: Required field validator in api key, album id settings
-Add: New product add in Our Product Page
-Modify: Error generating message css
-Bug Fixed : Invalid argument supplied in foreach loop
-Bug Fixed: Minor CSS issues
-Version update and Compatible with latest WordPress 4.9.6
-
-= 1.7.3 - Minor error bug fix
-= 1.7.2 - Custom CSS editor fix
-= 1.7.1 - Update Font-awesome
- Modify Custom CSS editor
- Update code for multiple flicker gallery at page/post
- Add recommendation and our product page
- compatible up to WordPress 4.9.5
-
-= 1.7.0 - plugin types update
-= 1.6.9 - readme update
-= 1.6.8 - version update
-= 1.6.7 - version update + compatible with latest WordPress 4.9.1
-= 1.6.6 - version update + compatible with latest WordPress 4.9
-= 1.6.5 - plugin & SSL – Mixed content error fixed
-= 1.6.4 - version update
-= 1.6.3 - version update + compatible with latest WordPress 4.8.2
-= 1.6.2 - version update + compatible with latest WordPress 4.8.1
-= 1.6.1 - version update
-= 1.6.0 - version update + compatible with latest WordPress 4.8
-= 1.5.9 - version update
-= 1.5.8 - version update
-= 1.5.7
-* Photo limit in single album is moved with Shortcode code
-* All JS & CSS files moved to
-= 1.5.6 compatible with latest WordPress
-= 1.5.5 29/11/2016 =
-* Update
-= 1.5.4.4 7/11/2016 =
-* Update
-= 1.5.4.3 10/10/2016 =
-* Plugin Version Update
-= 1.5.4.2 16/09/2016 =
-* Small Update
-= 1.5.4.1 14/07/2016 =
-* Small Update
-
-= 1.5.4 16/05/2016 =
-* Small Update
-
-= 1.5.3 21/04/2016 =
-* Compatible up to WordPress 4.5
-* New Setting: Custom CSS Option Added
-* New Features: Flickr Widget Gallery
-
-= 1.5.2 02/04/2016 =
-* small update
-
-= 1.5.1 7 March 2015 =
-* small update
-
-= 1.5 30 Dec 2015 =
-* small update
-
-= 1.4 11 Dec 2015 =
-* WordPress 4.4 Compatible
-
-= 1.3 21 Nov 2015 =
-* Latest WordPress 4.4 Compatibility Check
-* Russian Translation added in 1.3
-
-= 1.2 05 Oct 2015 =
-* Compatibility Check
-
-= 1.1 01 Sep 2015 =
-* Small Bug fixed
-
-= 1.0 26 June 2015 =
-* Fix: Gallery overlay issue
-
-= 0.9 09 June 2015 =
-* Fix: Minimising Bootstrap CSS
-
-= 0.8 22-Apr-2015 =
-* New: WordPress 4.2 Compatible
-
-= 0.7 =
-* Fix: Package size reduced
-* Fix: Shortcode detect function modified
-
-= 0.6 =
-* Fix: wp_reset_query() call fixed
-* New: Image Title now visible in lightbox preview.
-
-= 0.5 =
-* Fix: Play-pause.svg file missing fixed
-
-= 0.4 =
-* Remove unused css from bootstrap.css
-* Compatible with WordPress 4.0.1
-
-= 0.3 =
-* New: Help Section Added
-
-= 0.2 =
-* Update: Few Settings Modified
-* Fix: Gallery Layout Fixed
-
-= 0.1 =
-* New: Add New Album Gallery
-* New: Preview Album Gallery In Page/Post
-* New: Gallery Title Settings
-* New: Images Preview Light Box
-* New: Gallery Display Shortcode [FAG id=123]
-
 == Upgrade Notice ==
-None
 
-== Screenshots ==
-1. Flickr Album Gallery Preview 1
-2. Flickr Album Preview 2
-3. Flickr Gallery Preview 3
-4. Album Gallery Admin Gallery Creation
-5. Plugin Shortcode
-6. Gallery Preview On Page
+= 2.2.14 =
+Video items are now skipped in Flickr Albums to prevent display issues.
