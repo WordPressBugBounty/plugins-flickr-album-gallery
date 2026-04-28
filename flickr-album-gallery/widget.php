@@ -6,11 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Flickr Album Gallery Widget
  */
-class Flickr_album_gallery extends WP_Widget {
+class FlicGal_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-			'fa_gallery', // Base ID
+			'flicgal_gallery_widget', // Base ID
 			'Flickr Album Gallery', // Name
 			array(
 				'description' => 'Display Flickr album galleries into widget areas',
@@ -18,15 +18,6 @@ class Flickr_album_gallery extends WP_Widget {
 			) // Args
 		);
 	}
-
-	/*
-	* Front-end display of widget.
-	*
-	* @see WP_Widget::widget()
-	*
-	* @param array $args     Widget arguments.
-	@param array $instance Saved values from database.
-	*/
 
 	public function widget( $args, $instance ) {
 		$Title = apply_filters( 'flickr_widget_title', $instance['Title'] );
@@ -36,21 +27,14 @@ class Flickr_album_gallery extends WP_Widget {
 			if ( ! empty( $instance['Title'] ) ) {
 				echo $args['before_title'] . apply_filters( 'widget_title', $instance['Title'] ) . $args['after_title'];
 			}
-			echo do_shortcode( '[FAG id=' . esc_html( $FID ) . ']' );
+			echo do_shortcode( '[FLICGAL id=' . esc_html( $FID ) . ']' );
 		} else {
 			echo esc_html( '<p>Sorry! No Flickr Album Gallery Shortcode Found.</p>' );
 		}
 		echo $args['after_widget'];
-		wp_reset_query();
+		wp_reset_postdata();
 	}
 
-	/**
-	 * Back-end widget form.
-	 *
-	 * @see WP_Widget::form()
-	 *
-	 * @param array $instance Previously saved values from database.
-	 */
 	public function form( $instance ) {
 
 		if ( isset( $instance['Title'] ) ) {
@@ -72,16 +56,17 @@ class Flickr_album_gallery extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'Shortcode' ) ); ?>"><?php esc_html_e( 'Select Any', 'flickr-album-gallery' ); ?> (Required)</label>
 			<?php
-			// Get All Flickr Shortcode Custom Post Type
-			$FLICKR_CPT_Name  = 'fa_gallery';
-			$FLICKR_All_Posts = wp_count_posts( $FLICKR_CPT_Name )->publish;
-			global $All_Flickr;
-			$All_Flickr = array(
-				'post_type'      => $FLICKR_CPT_Name,
+			// Get All Flickr Shortcode Custom Post Type (both new + legacy for v2.2.14 compat)
+			$flicgal_new_count    = wp_count_posts( 'flicgal_gallery' )->publish;
+			$flicgal_legacy_count = wp_count_posts( 'fa_gallery' )->publish;
+			$FLICKR_All_Posts     = $flicgal_new_count + $flicgal_legacy_count;
+			global $flicgal_all_flickr;
+			$flicgal_all_flickr_args = array(
+				'post_type'      => array( 'flicgal_gallery', 'fa_gallery' ),
 				'orderby'        => 'ASC',
 				'posts_per_page' => $FLICKR_All_Posts,
 			);
-			$All_Flickr = new WP_Query( $All_Flickr );
+			$flicgal_all_flickr = new WP_Query( $flicgal_all_flickr_args );
 			?>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'Shortcode' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'Shortcode' ) ); ?>" style="width: 100%;">
 				<option value="Select Any Settings" 
@@ -90,11 +75,11 @@ class Flickr_album_gallery extends WP_Widget {
 					echo esc_attr( 'selected="selected"' ); } ?>
 				>Select Any Settings</option>
 				<?php
-				if ( $All_Flickr->have_posts() ) {
+				if ( $flicgal_all_flickr->have_posts() ) {
 					?>
 					<?php
-					while ( $All_Flickr->have_posts() ) :
-						$All_Flickr->the_post();
+					while ( $flicgal_all_flickr->have_posts() ) :
+						$flicgal_all_flickr->the_post();
 						$PostId    = get_the_ID();
 						$PostTitle = get_the_title( $PostId );
 						?>
@@ -131,8 +116,8 @@ class Flickr_album_gallery extends WP_Widget {
 } // end of class Flickr Album Gallery Shortcode Widget Class
 
 // Register Flickr Album Gallery Shortcode Widget
-add_action( 'widgets_init', 'register_Flickr_album_gallery' );
-function register_Flickr_album_gallery() {
-	register_widget( 'Flickr_album_gallery' );
+add_action( 'widgets_init', 'flicgal_register_widget' );
+function flicgal_register_widget() {
+	register_widget( 'FlicGal_Widget' );
 }
 ?>

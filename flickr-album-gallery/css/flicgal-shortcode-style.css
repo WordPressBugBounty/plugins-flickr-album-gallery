@@ -1,0 +1,165 @@
+.flicgal-gallery-wrapper .blueimp-gallery > .slides > .slide {
+	cursor: pointer;
+}
+
+.flicgal-gallery-wrapper .flicgal-spinner {
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: url("../img/spinner.gif");
+	background-position: center center;
+	background-repeat: no-repeat;
+	opacity: .8;
+}
+
+.flicgal-gallery-wrapper .flicgal-thumb {
+	margin: 20px auto;
+}
+
+.flicgal-gallery-wrapper .flicgal-error-wrapper {
+	margin: 20px 0;
+}
+
+.flicgal-gallery-wrapper .flicgal-error-wrapper .flicgal-error {
+	font-style: italic;
+}
+
+.flicgal-gallery-wrapper .flicgal-gallery-footer {
+	margin-top: 50px;
+	color: #333;
+}
+
+.flicgal-gallery-wrapper .flicgal-gallery-footer .footer-content {
+	text-align: right;
+	font-size: 0.7em;
+}
+
+.flicgal-gallery-wrapper .flicgal-gallery-footer .footer-content p {
+	margin-bottom: 3px;
+}
+
+.flicgal-gallery-wrapper .flicgal-gallery-footer .flickr-notice {
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+/* Custom Flexbox Grid System */
+.flicgal-gallery-wrapper .flicgal-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+    justify-content: center !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-gallery-container-wrapper {
+    width: 100% !important;
+    overflow: visible !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-spinner-wrapper {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 30px 0 !important;
+    display: block !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-loading-img {
+    display: inline-block !important;
+    margin: 0 auto !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-gallery-item {
+    position: relative !important;
+    width: 100% !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-bottom: 30px !important;
+    box-sizing: border-box !important;
+}
+
+/* Desktop Columns */
+.flicgal-gallery-wrapper .flicgal-col-1 { flex: 0 0 100% !important; max-width: 100% !important; }
+.flicgal-gallery-wrapper .flicgal-col-2 { flex: 0 0 50% !important; max-width: 50% !important; }
+.flicgal-gallery-wrapper .flicgal-col-3 { flex: 0 0 33.333333% !important; max-width: 33.333333% !important; }
+.flicgal-gallery-wrapper .flicgal-col-4 { flex: 0 0 25% !important; max-width: 25% !important; }
+.flicgal-gallery-wrapper .flicgal-col-6 { flex: 0 0 16.666667% !important; max-width: 16.666667% !important; }
+
+/* Tablets (2 columns) */
+@media (max-width: 991px) {
+    .flicgal-gallery-wrapper .flicgal-col-3, 
+    .flicgal-gallery-wrapper .flicgal-col-4, 
+    .flicgal-gallery-wrapper .flicgal-col-6 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+/* Mobile (1 column) */
+@media (max-width: 575px) {
+    .flicgal-gallery-wrapper .flicgal-col-2, 
+    .flicgal-gallery-wrapper .flicgal-col-3, 
+    .flicgal-gallery-wrapper .flicgal-col-4, 
+    .flicgal-gallery-wrapper .flicgal-col-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+.flicgal-gallery-wrapper .flicgal-img-responsive {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-img-thumbnail {
+    padding: 4px !important;
+    line-height: 1.42857143 !important;
+    background-color: #fff !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    transition: all .2s ease-in-out !important;
+    display: block !important;
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-label {
+    display: inline !important;
+    padding: .2em .6em .3em !important;
+    font-size: 75% !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    color: #fff !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    vertical-align: baseline !important;
+    border-radius: .25em !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-label-danger {
+    background-color: #d9534f !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-alert {
+    padding: 15px !important;
+    margin-bottom: 20px !important;
+    border: 1px solid transparent !important;
+    border-radius: 4px !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-alert-danger {
+    color: #a94442 !important;
+    background-color: #f2dede !important;
+    border-color: #ebccd1 !important;
+}
+
+.flicgal-gallery-wrapper .flicgal-title {
+    text-align: center !important;
+    margin-bottom: 25px !important;
+}
+
+.flicgal-gallery-wrapper {
+    text-align: center !important;
+}

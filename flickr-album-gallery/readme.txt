@@ -3,26 +3,25 @@ Contributors: awordpresslife, razipathhan, hanif0991, muhammadshahid, fkfaisalkh
 Tags: flickr gallery, flickr, image gallery, photo gallery, lightbox
 Requires at least: 5.0
 Requires PHP: 7.0
-Tested up to: 6.9
-Stable tag: 2.2.14
+Tested up to: 7.0
+Stable tag: 2.2.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Display Flickr albums on WordPress with lightbox preview, SEO-friendly galleries, and easy shortcode integration.
+Display Flickr albums on WordPress with lightbox preview and shortcode integration. Refactored for standard repository compliance.
 
 == Description ==
 
 Flickr Album Gallery helps you showcase your Flickr photo collections directly on your WordPress website. Whether you're a photographer sharing your portfolio, a blogger documenting your travels, or a business highlighting your work, this plugin provides a straightforward way to embed and display Flickr albums.
 
-**Demo Links:**
+**Third-Party Service Disclosure**
 
-**Free Version Demo:** **[Flickr Album Gallery](http://wpfrank.com/demo/flickr-album-gallery/)**
-**Pro Version Demo:** **[Flickr Album Gallery Pro](http://wpfrank.com/demo/flickr-album-gallery-pro/)**
-**Where to Buy:** **[Buy Flickr Album Gallery Pro](https://wpfrank.com/wordpress-plugins/flickr-album-gallery-pro/)**
+This plugin utilizes the **Flickr API** to fetch and display images from your Flickr account. By using this plugin, you are interacting with Flickr's services.
+*   **Service URL:** [https://www.flickr.com/services/api/](https://www.flickr.com/services/api/)
+*   **Terms of Service:** [https://www.flickr.com/help/terms](https://www.flickr.com/help/terms)
+*   **Privacy Policy:** [https://www.flickr.com/help/privacy](https://www.flickr.com/help/privacy)
 
-**How It Works**
-
-Connect your Flickr account using your API Key and Album ID, then use a simple shortcode to display your gallery anywhere on your site. The plugin fetches your photos and displays them in a clean two-column layout with lightbox functionality for full-size viewing.
+Connect your Flickr account using your API Key and Album ID, then use a shortcode to display your gallery. The plugin fetches your photos and displays them in a responsive grid layout with lightbox functionality for full-size viewing.
 
 == Video Tutorial ==
 
@@ -32,43 +31,61 @@ https://www.youtube.com/watch?v=PynE88-WX_o
 
 **Key Capabilities**
 
-* Embed Flickr albums using shortcode `[FAG id=123]`
-* Two-column responsive gallery layout
+* Embed Flickr albums using shortcode `[FLICGAL id=123]`
+* Multiple responsive gallery layouts (2, 3, 4, 6 columns)
+* Masonry and grid display support
 * Lightbox preview for enlarged image viewing
-* SEO-optimized with proper title tags and alt text
+* No artificial limits on the number of photos per album
+* Includes title tags and alt text for images
 * Works with posts, pages, and widget areas
 * Compatible with Gutenberg and page builders like Elementor
-* Display up to 200 photos per album
+* Zero third-party framework dependencies (Bootstrap removed)
 
 **Who Is This For?**
 
 This plugin works well for photographers who already host their images on Flickr and want to display them on WordPress without re-uploading. It's also useful for bloggers and businesses who maintain Flickr albums and need an easy integration method.
 
+== Features ==
+
+* Gallery title customization
+* Multiple column layouts (2, 3, 4, 6 columns)
+* Lightbox image preview
+* Masonry grid support
+* Includes alt text for images
+* Shortcode-based embedding
+* Widget support
+* Lightweight Flexbox-based grid system
+
 == Free Version Features ==
 
 * Gallery title customization
-* Two-column layout
+* Multiple column layouts (2, 3, 4, 6 columns)
 * Lightbox image preview
-* SEO-friendly output with alt text
-* Custom CSS support
-* Up to 200 images per album
+* Masonry grid support
+* Includes alt text for images
 * Shortcode-based embedding
 * Widget support
+* Lightweight Flexbox-based grid system
 
 == Pro Version Features ==
 
 The Pro version adds advanced customization and layout options:
 
-* Multiple column layouts (3, 4, 5 columns)
-* 8 hover effects and animations
+* Extended Column Layouts (2, 5, 6, 8, 10)
+* 8 different lightbox libraries for larger preview of album images
+* Multiple hover effects and animations
 * Masonry grid layout
 * Lazy loading for faster page loads
-* Multiple lightbox options
 * Thumbnail and lightbox image size settings
 * Custom hover color and opacity
-* Thumbnail border styling
+* Thumbnail size, height, spacing and, border styling
 * Up to 500 images per album
-* Default user settings for quick setup
+* Pagination
+* Video Support
+* Default settings for quick album setup
+* All galleries global settings
+* In-build Docs
+* Custom CSS filed for every album to more beautify the output gallery
 
 == Language Contributors ==
 
@@ -84,8 +101,7 @@ Want to contribute a translation? Contact us at farazfrank777 (at) gmail (dot) c
 3. Activate the plugin after installation.
 4. Navigate to Flickr Album Gallery > Add New Gallery in your dashboard.
 5. Enter your gallery title, Flickr API Key, and Album ID.
-6. Optionally, add custom CSS for styling.
-7. Publish the gallery and use the shortcode `[FAG id=123]` in posts, pages, or widgets.
+6. Publish the gallery and use the shortcode `[FLICGAL id=123]` in posts, pages, or widgets.
 
 == Frequently Asked Questions ==
 
@@ -103,11 +119,11 @@ Yes, we regularly test and update the plugin for compatibility with new WordPres
 
 = Can I use this plugin with Elementor, Gutenberg, or other page builders? =
 
-Yes, the shortcode `[FAG id=123]` works with all major page builders including Elementor, Gutenberg, Divi, and others.
+Yes, the shortcode `[FLICGAL id=123]` works with all major page builders including Elementor, Gutenberg, Divi, and others.
 
 = How many photos can I display per album? =
 
-The free version supports up to 200 images per album. The Pro version increases this limit to 500 images.
+There are no artificial limits in this version. The plugin will attempt to fetch all available images in the album provided by the Flickr API.
 
 = Can I display multiple galleries on the same page? =
 
@@ -119,7 +135,7 @@ The plugin fetches photos from Flickr each time the page loads, so new photos ap
 
 = Does this plugin work with private Flickr albums? =
 
-No, only publicly visible Flickr albums can be displayed. Private albums require authentication that the free version doesn't support.
+No, only publicly visible Flickr albums can be displayed.
 
 = Why are my images not loading? =
 
@@ -127,11 +143,11 @@ Check that your API Key and Album ID are correct. Also verify that the album is 
 
 = Can I customize the gallery appearance? =
 
-Yes, you can add custom CSS in the gallery settings. The Pro version offers additional styling options like hover colors, border settings, and multiple layout choices.
+Yes, you can choose from multiple column layouts.
 
 = Does the plugin affect page load speed? =
 
-The free version loads all images at once. For better performance with large albums, consider the Pro version which includes lazy loading.
+The plugin is now lightweight and does not depend on external frameworks like Bootstrap, improving overall performance.
 
 = How do I get support? =
 
@@ -139,14 +155,24 @@ Visit the [WordPress Support Forum](https://wordpress.org/support/plugin/flickr-
 
 == Screenshots ==
 
-1. Gallery Display: Clean two-column layout on your site.
-2. Gallery Demo: Column layout with spacing options.
-3. Lightbox Preview: Full-size images with smooth transitions.
+1. Gallery Display: Responsive layout on your site.
+2. Column Options: Choose between 2, 3, 4, or 6 columns.
+3. Lightbox Preview: Full-size images.
 4. Admin Dashboard: Manage your Flickr galleries easily.
 5. Settings Page: Customize gallery settings.
-6. Shortcode Usage: Embed galleries using simple shortcodes.
+6. Shortcode Usage: Embed galleries using simple shortcode `[FLICGAL]`.
 
 == Changelog ==
+
+= 2.2.15 =
+* Guidelines Compliance: Full refactoring for repository standards.
+* Framework Removal: Removed Bootstrap dependency and replaced with a lightweight custom Flexbox grid.
+* No Limits: The plugin is now fully functional without artificial restrictions.
+* Promotional Cleanup: Removed all "Pro" version upsells, promotional banners, and third-party plugin notices.
+* Namespace Migration: Renamed all 'fag_' prefixes to 'flicgal_' for better isolation and compliance.
+* Standardized shortcode to [FLICGAL].
+* Improved security with updated nonces and permission checks.  
+* UI Cleanup: Removed dashicons from buttons and streamlined the admin interface for better compliance.
 
 = 2.2.14 =
 * Video items will be skipped for now in Flickr Albums.
@@ -164,22 +190,7 @@ Visit the [WordPress Support Forum](https://wordpress.org/support/plugin/flickr-
 * Changes in plugin details
 * WordPress Compatibility Test to 6.0.2
 
-= 2.2.8 + 2.2.9  =
-* Latest WordPress Compatibility Test
-
-= 2.2.7 =
-* New Version Update and Latest WordPress Compatibility Test
-
-= 2.2.6 =
-* Security issues fixed.
-
-= 2.2.5 =
-* Old gallery fix in new version.
-
-= 2.2.4 =
-* Broken gallery problem fixed.
-
 == Upgrade Notice ==
 
-= 2.2.14 =
-Video items are now skipped in Flickr Albums to prevent display issues.
+= 2.2.15 =
+Full refactoring for 2026 WordPress.org guidelines compliance, including removal of all promotional content and transition to a custom lightweight grid system.
