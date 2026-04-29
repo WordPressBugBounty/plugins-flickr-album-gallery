@@ -14,8 +14,8 @@ function flicgal_shortcode( $Id ) {
     wp_enqueue_script( 'flicgal-frontend-js', plugins_url( 'js/flicgal-frontend.js', __FILE__ ), array( 'jquery' ), FLICGAL_PLUGIN_VER, true );
 
     // CSS
-    wp_enqueue_style( 'flicgal-blueimp-gallery-css', FLICGAL_PLUGIN_URL . 'css/blueimp-gallery.css' );
-    wp_enqueue_style( 'flicgal-site-css', FLICGAL_PLUGIN_URL . 'css/flicgal-shortcode-style.css' );
+    wp_enqueue_style( 'flicgal-blueimp-gallery-css', FLICGAL_PLUGIN_URL . 'css/blueimp-gallery.css', array(), FLICGAL_PLUGIN_VER );
+    wp_enqueue_style( 'flicgal-site-css', FLICGAL_PLUGIN_URL . 'css/flicgal-shortcode-style.css', array(), FLICGAL_PLUGIN_VER );
 
     if ( isset( $Id['id'] ) ) {
         global $flicgal_main;
@@ -104,9 +104,9 @@ function flicgal_shortcode( $Id ) {
                         <div id="blueimp-gallery-<?php echo esc_attr( $ID ); ?>" class="blueimp-gallery blueimp-gallery-controls">
                             <div class="slides"></div>
                             <h3 class="title"></h3>
-                            <a class="prev">‹</a>
-                            <a class="next">›</a>
-                            <a class="close">×</a>
+                            <a class="prev"></a>
+                            <a class="next"></a>
+                            <a class="close"></a>
                             <a class="play-pause"></a>
                             <ol class="indicator"></ol>
                         </div>
@@ -135,7 +135,10 @@ function flicgal_shortcode( $Id ) {
                 'class' => array(),
             ),
         );
-        echo wp_kses( "<div align='center' class='flicgal-alert flicgal-alert-danger'>" . __( 'Sorry! Invalid Flickr Album Shortcode Embedded', 'flickr-album-gallery' ) . '</div>', $flicgal_allowed_shortcode_msg );
+        echo wp_kses(
+            "<div align='center' class='flicgal-alert flicgal-alert-danger'>" . esc_html__( 'Sorry! Invalid Flickr Album Shortcode Embedded', 'flickr-album-gallery' ) . '</div>',
+            $flicgal_allowed_shortcode_msg
+        );
     }
     wp_reset_postdata();
     return ob_get_clean();

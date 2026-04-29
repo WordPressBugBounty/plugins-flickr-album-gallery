@@ -36,6 +36,7 @@ function flicgal_get_migration_stats() {
 	global $wpdb;
 
 	// Count legacy fa_gallery posts
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$legacy_gallery_count = (int) $wpdb->get_var(
 		$wpdb->prepare(
 			"SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type = %s AND post_status IN ('publish','draft','pending','private')",
@@ -44,6 +45,7 @@ function flicgal_get_migration_stats() {
 	);
 
 	// Count new flicgal_gallery posts
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$new_gallery_count = (int) $wpdb->get_var(
 		$wpdb->prepare(
 			"SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_type = %s AND post_status IN ('publish','draft','pending','private')",
@@ -52,11 +54,13 @@ function flicgal_get_migration_stats() {
 	);
 
 	// Count posts/pages containing old [FAG shortcode
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$old_shortcode_count = (int) $wpdb->get_var(
 		"SELECT COUNT(*) FROM {$wpdb->posts} WHERE post_content LIKE '%[FAG %' AND post_status IN ('publish','draft','pending','private')"
 	);
 
 	// Count posts with old meta key fag_settings
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$old_meta_count = (int) $wpdb->get_var(
 		$wpdb->prepare(
 			"SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key = %s",
@@ -65,6 +69,7 @@ function flicgal_get_migration_stats() {
 	);
 
 	// Count posts that already have new meta key flicgal_settings
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$new_meta_count = (int) $wpdb->get_var(
 		$wpdb->prepare(
 			"SELECT COUNT(DISTINCT post_id) FROM {$wpdb->postmeta} WHERE meta_key = %s",
@@ -91,13 +96,13 @@ function flicgal_handle_migration() {
 	}
 
 	// Verify nonce
-	if ( ! isset( $_POST['flicgal_migration_nonce'] ) || ! wp_verify_nonce( $_POST['flicgal_migration_nonce'], 'flicgal_run_migration' ) ) {
-		wp_die( __( 'Security check failed.', 'flickr-album-gallery' ) );
+	if ( ! isset( $_POST['flicgal_migration_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['flicgal_migration_nonce'] ) ), 'flicgal_run_migration' ) ) {
+		wp_die( esc_html__( 'Security check failed.', 'flickr-album-gallery' ) );
 	}
 
 	// Check permissions
 	if ( ! current_user_can( 'manage_options' ) ) {
-		wp_die( __( 'You do not have permission to perform this action.', 'flickr-album-gallery' ) );
+		wp_die( esc_html__( 'You do not have permission to perform this action.', 'flickr-album-gallery' ) );
 	}
 
 	global $wpdb;
@@ -108,10 +113,11 @@ function flicgal_handle_migration() {
 		'errors'              => array(),
 	);
 
-	$action = sanitize_text_field( $_POST['flicgal_migrate_action'] );
+	$action = isset( $_POST['flicgal_migrate_action'] ) ? sanitize_text_field( wp_unslash( $_POST['flicgal_migrate_action'] ) ) : '';
 
 	// --- Step 1: Migrate Post Types (fa_gallery → flicgal_gallery) ---
 	if ( $action === 'full' || $action === 'galleries' ) {
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$gallery_result = $wpdb->query(
 			$wpdb->prepare(
 				"UPDATE {$wpdb->posts} SET post_type = %s WHERE post_type = %s",
@@ -129,6 +135,7 @@ function flicgal_handle_migration() {
 	// --- Step 2: Migrate Meta Keys (fag_settings → flicgal_settings) ---
 	if ( $action === 'full' || $action === 'meta' ) {
 		// Get all posts that have fag_settings but NOT flicgal_settings
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$posts_with_old_meta = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT pm.post_id, pm.meta_value 
@@ -169,6 +176,7 @@ function flicgal_handle_migration() {
 	// --- Step 3: Migrate Shortcodes in Content ([FAG id=X] → [FLICGAL id=X]) ---
 	if ( $action === 'full' || $action === 'shortcodes' ) {
 		// Get all posts containing old shortcode
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$posts_with_old_shortcode = $wpdb->get_results(
 			"SELECT ID, post_content FROM {$wpdb->posts} WHERE post_content LIKE '%[FAG %' AND post_status IN ('publish','draft','pending','private')"
 		);
@@ -179,6 +187,7 @@ function flicgal_handle_migration() {
 			$new_content = str_replace( '[fag ', '[FLICGAL ', $new_content );
 
 			if ( $new_content !== $post->post_content ) {
+				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->update(
 					$wpdb->posts,
 					array( 'post_content' => $new_content ),
@@ -209,7 +218,7 @@ function flicgal_handle_migration() {
  */
 function flicgal_migration_page_render() {
 	if ( ! current_user_can( 'manage_options' ) ) {
-		wp_die( __( 'You do not have permission to access this page.', 'flickr-album-gallery' ) );
+		wp_die( esc_html__( 'You do not have permission to access this page.', 'flickr-album-gallery' ) );
 	}
 
 	$stats   = flicgal_get_migration_stats();
@@ -229,13 +238,13 @@ function flicgal_migration_page_render() {
 				<p><strong><?php esc_html_e( '✅ Migration completed successfully!', 'flickr-album-gallery' ); ?></strong></p>
 				<ul style="list-style: disc; padding-left: 20px;">
 					<?php if ( $results['galleries_migrated'] > 0 ) : ?>
-						<li><?php echo esc_html( sprintf( __( '%d galleries migrated (fa_gallery → flicgal_gallery)', 'flickr-album-gallery' ), $results['galleries_migrated'] ) ); ?></li>
+						<li><?php echo esc_html( sprintf( /* translators: %d: number of galleries */ __( '%d galleries migrated (fa_gallery → flicgal_gallery)', 'flickr-album-gallery' ), $results['galleries_migrated'] ) ); ?></li>
 					<?php endif; ?>
 					<?php if ( $results['meta_migrated'] > 0 ) : ?>
-						<li><?php echo esc_html( sprintf( __( '%d gallery settings migrated (fag_settings → flicgal_settings)', 'flickr-album-gallery' ), $results['meta_migrated'] ) ); ?></li>
+						<li><?php echo esc_html( sprintf( /* translators: %d: number of gallery settings */ __( '%d gallery settings migrated (fag_settings → flicgal_settings)', 'flickr-album-gallery' ), $results['meta_migrated'] ) ); ?></li>
 					<?php endif; ?>
 					<?php if ( $results['shortcodes_migrated'] > 0 ) : ?>
-						<li><?php echo esc_html( sprintf( __( '%d posts/pages updated ([FAG] → [FLICGAL])', 'flickr-album-gallery' ), $results['shortcodes_migrated'] ) ); ?></li>
+						<li><?php echo esc_html( sprintf( /* translators: %d: number of posts/pages */ __( '%d posts/pages updated ([FAG] → [FLICGAL])', 'flickr-album-gallery' ), $results['shortcodes_migrated'] ) ); ?></li>
 					<?php endif; ?>
 				</ul>
 				<?php if ( ! empty( $results['errors'] ) ) : ?>
@@ -312,7 +321,7 @@ function flicgal_migration_page_render() {
 						<?php wp_nonce_field( 'flicgal_run_migration', 'flicgal_migration_nonce' ); ?>
 						<input type="hidden" name="flicgal_migrate_action" value="galleries" />
 						<button type="submit" class="button button-secondary">
-							<?php echo esc_html( sprintf( __( 'Migrate %d Galleries', 'flickr-album-gallery' ), $stats['legacy_galleries'] ) ); ?>
+							<?php echo esc_html( sprintf( /* translators: %d: number of galleries */ __( 'Migrate %d Galleries', 'flickr-album-gallery' ), $stats['legacy_galleries'] ) ); ?>
 						</button>
 					</form>
 					<?php endif; ?>
@@ -322,7 +331,7 @@ function flicgal_migration_page_render() {
 						<?php wp_nonce_field( 'flicgal_run_migration', 'flicgal_migration_nonce' ); ?>
 						<input type="hidden" name="flicgal_migrate_action" value="meta" />
 						<button type="submit" class="button button-secondary">
-							<?php echo esc_html( sprintf( __( 'Migrate %d Meta Keys', 'flickr-album-gallery' ), $stats['old_meta'] ) ); ?>
+							<?php echo esc_html( sprintf( /* translators: %d: number of meta keys */ __( 'Migrate %d Meta Keys', 'flickr-album-gallery' ), $stats['old_meta'] ) ); ?>
 						</button>
 					</form>
 					<?php endif; ?>
@@ -332,7 +341,7 @@ function flicgal_migration_page_render() {
 						<?php wp_nonce_field( 'flicgal_run_migration', 'flicgal_migration_nonce' ); ?>
 						<input type="hidden" name="flicgal_migrate_action" value="shortcodes" />
 						<button type="submit" class="button button-secondary">
-							<?php echo esc_html( sprintf( __( 'Update %d Shortcodes', 'flickr-album-gallery' ), $stats['old_shortcodes'] ) ); ?>
+							<?php echo esc_html( sprintf( /* translators: %d: number of shortcodes */ __( 'Update %d Shortcodes', 'flickr-album-gallery' ), $stats['old_shortcodes'] ) ); ?>
 						</button>
 					</form>
 					<?php endif; ?>

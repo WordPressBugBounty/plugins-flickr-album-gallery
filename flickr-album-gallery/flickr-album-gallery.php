@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin Name: Flickr Album Gallery
  * Plugin URI:  https://developer.wordpress.org/plugins/the-basics/
  * Description: Flickr Album Gallery is on JS API plugin to display all public Flickr albums on your WordPress website.
- * Version:     2.2.15
+ * Version:     2.2.16
  * Author:      FARAZFRANK
  * Author URI:  https://wpfrank.com/
  * Text Domain: flickr-album-gallery
@@ -33,7 +33,7 @@ along with Flickr Album Gallery. If not, see http://www.gnu.org/licenses/gpl-2.0
  */
 define( 'FLICGAL_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FLICGAL_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'FLICGAL_PLUGIN_VER', '2.2.15' );
+define( 'FLICGAL_PLUGIN_VER', '2.2.16' );
 
 // load JS script
 function flicgal_load_scripts() {
@@ -67,7 +67,7 @@ class FlicGal_Main {
 	 * Translate Plugin
 	 */
 	public function flicgal_translate_plugin() {
-		load_plugin_textdomain( 'flickr-album-gallery', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		// load_plugin_textdomain() is discouraged for plugins on WordPress.org
 	}
 
 	// 2 - Register Flickr Album Custom Post Type
@@ -147,9 +147,9 @@ class FlicGal_Main {
 	function flicgal_gallery_columns( $columns ) {
 		$columns = array(
 			'cb'                => '<input type="checkbox" />',
-			'title'             => __( 'Title' ),
+			'title'             => __( 'Title', 'flickr-album-gallery' ),
 			'flicgal-shortcode' => __( 'Shortcode', 'flickr-album-gallery' ),
-			'date'              => __( 'Date' ),
+			'date'              => __( 'Date', 'flickr-album-gallery' ),
 		);
 		return $columns;
 	}
@@ -285,7 +285,12 @@ class FlicGal_Main {
 							<label for="flicgal-api-key"><?php esc_html_e( 'Flickr API Key', 'flickr-album-gallery' ); ?></label>
 							<div class="flicgal-field-input">
 								<input required type="text" name="flicgal-api-key" id="flicgal-api-key" value="<?php echo esc_attr( $flicgal_api_key ); ?>" placeholder="e.g. 1234567890abcdef1234567890abcdef">
-								<p class="description"><?php printf( __( 'Get your API key from <a href="%s" target="_blank">Flickr App Garden</a>', 'flickr-album-gallery' ), 'https://www.flickr.com/services/apps/create/apply/' ); ?></p>
+								<p class="description">
+								<?php
+								/* translators: %s: Flickr App Garden URL */
+								printf( esc_html__( 'Get your API key from %s', 'flickr-album-gallery' ), '<a href="https://www.flickr.com/services/apps/create/apply/" target="_blank">Flickr App Garden</a>' );
+								?>
+								</p>
 							</div>
 						</div>
 						<div class="flicgal-field-row">
@@ -448,7 +453,7 @@ class FlicGal_Main {
 	 */
 	public function flicgal_save_meta_box( $PostID ) {
 		// Verify nonce
-		if ( ! isset( $_POST['flicgal_settings_nonce'] ) || ! wp_verify_nonce( $_POST['flicgal_settings_nonce'], 'flicgal_save_settings' ) ) {
+		if ( ! isset( $_POST['flicgal_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['flicgal_settings_nonce'] ) ), 'flicgal_save_settings' ) ) {
 			return;
 		}
 
@@ -466,9 +471,9 @@ class FlicGal_Main {
 
 			$flicgal_api_key     = sanitize_text_field( wp_unslash( $_POST['flicgal-api-key'] ) );
 			$flicgal_album_id    = sanitize_text_field( wp_unslash( $_POST['flicgal-album-id'] ) );
-			$flicgal_show_title  = sanitize_text_field( wp_unslash( $_POST['flicgal-show-title'] ) );
-			$flicgal_col_layout  = sanitize_text_field( wp_unslash( $_POST['flicgal-col-layout'] ) );
-			$flicgal_image_limit = isset( $_POST['flicgal-image-limit'] ) ? absint( $_POST['flicgal-image-limit'] ) : 200;
+			$flicgal_show_title  = isset( $_POST['flicgal-show-title'] ) ? sanitize_text_field( wp_unslash( $_POST['flicgal-show-title'] ) ) : 'no';
+			$flicgal_col_layout  = isset( $_POST['flicgal-col-layout'] ) ? sanitize_text_field( wp_unslash( $_POST['flicgal-col-layout'] ) ) : 'flicgal-col-4';
+			$flicgal_image_limit = isset( $_POST['flicgal-image-limit'] ) ? absint( wp_unslash( $_POST['flicgal-image-limit'] ) ) : 200;
 
 			$flicgal_array[]     = array(
 				'flicgal_api_key'        => $flicgal_api_key,

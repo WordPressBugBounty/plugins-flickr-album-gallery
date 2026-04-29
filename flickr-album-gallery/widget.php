@@ -11,27 +11,26 @@ class FlicGal_Widget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'flicgal_gallery_widget', // Base ID
-			'Flickr Album Gallery', // Name
+			esc_html__( 'Flickr Album Gallery', 'flickr-album-gallery' ), // Name
 			array(
-				'description' => 'Display Flickr album galleries into widget areas',
-				'flickr-album-gallery',
+				'description' => esc_html__( 'Display Flickr album galleries into widget areas', 'flickr-album-gallery' ),
 			) // Args
 		);
 	}
 
 	public function widget( $args, $instance ) {
-		$Title = apply_filters( 'flickr_widget_title', $instance['Title'] );
-		echo $args['before_widget'];
-		$FID = apply_filters( 'flickr_widget_shortcode', $instance['Shortcode'] );
+		$Title = apply_filters( 'flicgal_widget_title', $instance['Title'] );
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$FID = apply_filters( 'flicgal_widget_shortcode', $instance['Shortcode'] );
 		if ( is_numeric( $FID ) ) {
 			if ( ! empty( $instance['Title'] ) ) {
-				echo $args['before_title'] . apply_filters( 'widget_title', $instance['Title'] ) . $args['after_title'];
+				echo $args['before_title'] . apply_filters( 'widget_title', $instance['Title'] ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
-			echo do_shortcode( '[FLICGAL id=' . esc_html( $FID ) . ']' );
+			echo do_shortcode( '[FLICGAL id=' . (int) $FID . ']' );
 		} else {
-			echo esc_html( '<p>Sorry! No Flickr Album Gallery Shortcode Found.</p>' );
+			echo '<p>' . esc_html__( 'Sorry! No Flickr Album Gallery Shortcode Found.', 'flickr-album-gallery' ) . '</p>';
 		}
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		wp_reset_postdata();
 	}
 
@@ -50,7 +49,7 @@ class FlicGal_Widget extends WP_Widget {
 		}
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'Title' ) ); ?>"><?php esc_html_e( 'Widget Title' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'Title' ) ); ?>"><?php esc_html_e( 'Widget Title', 'flickr-album-gallery' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'Title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'Title' ) ); ?>" type="text" value="<?php echo esc_attr( $Title ); ?>">
 		</p>
 		<p>
@@ -72,8 +71,8 @@ class FlicGal_Widget extends WP_Widget {
 				<option value="Select Any Settings" 
 				<?php
 				if ( $Shortcode == 'Select Any Settings' ) {
-					echo esc_attr( 'selected="selected"' ); } ?>
-				>Select Any Settings</option>
+					echo 'selected="selected"'; } ?>
+				><?php esc_html_e( 'Select Any Settings', 'flickr-album-gallery' ); ?></option>
 				<?php
 				if ( $flicgal_all_flickr->have_posts() ) {
 					?>
@@ -86,7 +85,7 @@ class FlicGal_Widget extends WP_Widget {
 				<option value="<?php echo esc_attr( $PostId ); ?>" 
 										  <?php
 											if ( $Shortcode == $PostId ) {
-												echo esc_attr( 'selected="selected"' ); } ?>
+												echo 'selected="selected"'; } ?>
 				>
 						<?php
 						if ( $PostTitle ) {
@@ -99,7 +98,7 @@ class FlicGal_Widget extends WP_Widget {
 				<?php endwhile; ?>
 					<?php
 				} else {
-					echo esc_html( '<option>Sorry! No Flickr Album Gallery Shortcode Found.</option>' );
+					echo '<option>' . esc_html__( 'Sorry! No Flickr Album Gallery Shortcode Found.', 'flickr-album-gallery' ) . '</option>';
 				}
 				?>
 			</select>
@@ -109,8 +108,8 @@ class FlicGal_Widget extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance              = array();
-		$instance['Title']     = ( ! empty( $new_instance['Title'] ) ) ? strip_tags( $new_instance['Title'] ) : '';
-		$instance['Shortcode'] = ( ! empty( $new_instance['Shortcode'] ) ) ? strip_tags( $new_instance['Shortcode'] ) : 'Select Any Flickr Album Gallery';
+		$instance['Title']     = ( ! empty( $new_instance['Title'] ) ) ? wp_strip_all_tags( $new_instance['Title'] ) : '';
+		$instance['Shortcode'] = ( ! empty( $new_instance['Shortcode'] ) ) ? wp_strip_all_tags( $new_instance['Shortcode'] ) : 'Select Any Flickr Album Gallery';
 		return $instance;
 	}
 } // end of class Flickr Album Gallery Shortcode Widget Class

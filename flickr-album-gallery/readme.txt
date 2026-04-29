@@ -1,10 +1,10 @@
-=== Album Gallery For Flickr ===
+=== Flickr Album Gallery ===
 Contributors: awordpresslife, razipathhan, hanif0991, muhammadshahid, fkfaisalkhan007, sharikkhan007, zishlife, FARAZFRANK
 Tags: flickr gallery, flickr, image gallery, photo gallery, lightbox
 Requires at least: 5.0
 Requires PHP: 7.0
 Tested up to: 7.0
-Stable tag: 2.2.15
+Stable tag: 2.2.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -164,6 +164,16 @@ Visit the [WordPress Support Forum](https://wordpress.org/support/plugin/flickr-
 
 == Changelog ==
 
+= 2.2.16 =
+* Security: Conducted comprehensive security audit of all inputs and outputs.
+* Security: Hardened data saving with strict nonce verification and capability checks.
+* Security: Implemented `wp_unslash()` for all `$_POST` data to ensure data integrity.
+* UI: Resolved lightbox control distortions and enforced consistent icon layout across different WordPress themes.
+* UI: Added CSS resets and fixed background positioning for Blueimp Gallery navigation arrows and close button.
+* Internationalization: Fixed missing text domains and added translator comments for placeholders.
+* Code Standards: Replaced discouraged functions `strip_tags()` with `wp_strip_all_tags()` and removed redundant `load_plugin_textdomain()`.
+* Assets: Added proper versioning to enqueued CSS and JS files for better cache management.
+
 = 2.2.15 =
 * Guidelines Compliance: Full refactoring for repository standards.
 * Framework Removal: Removed Bootstrap dependency and replaced with a lightweight custom Flexbox grid.
@@ -191,6 +201,9 @@ Visit the [WordPress Support Forum](https://wordpress.org/support/plugin/flickr-
 * WordPress Compatibility Test to 6.0.2
 
 == Upgrade Notice ==
+
+= 2.2.16 =
+Security hardening, lightbox UI refinements, internationalization improvements, and WordPress coding standards compliance update.
 
 = 2.2.15 =
 Full refactoring for 2026 WordPress.org guidelines compliance, including removal of all promotional content and transition to a custom lightweight grid system.
